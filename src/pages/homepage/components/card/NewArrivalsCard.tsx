@@ -1,7 +1,10 @@
+import { useState } from 'react';
+
 interface Item {
   id: number;
   title: string;
   image: string;
+  image2: string;
   desc: string;
   price: number;
 }
@@ -11,15 +14,20 @@ interface Props {
 }
 
 const NewArrivalsCard = ({ item }: Props) => {
+  const [isHovered, setIsHovered] = useState(false);
   return (
-    <div className='cursor-pointer p-4 rounded-lg relative group z-[100] overflow-hidden '>
-      <div>
+    <div className='cursor-pointer p-4 rounded-lg relative group z-[100] overflow-hidden  '>
+      <div
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className='overflow-hidden rounded-lg'
+      >
         <img
-          src='https://theoodie.com/cdn/shop/files/002025RR-Original_Oodies_Category_Tiles_1080_x_1489_-5.jpg?v=1738402880&width=450'
+          src={isHovered ? item.image2 : item.image}
           alt=''
-          className='rounded-lg'
+          className='rounded-lg transition-transform duration-300 transform hover:scale-110'
         />
-        <span className='bg-[#F7921E] p-1 text-[18px] text-white px-3 rounded-md absolute bottom-[150px] left-5'>
+        <span className='bg-[#F7921E] p-1 text-[18px] text-white px-3 rounded-md absolute top-[20px] right-5'>
           New Arrival
         </span>
       </div>

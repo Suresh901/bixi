@@ -9,6 +9,7 @@ interface SliderItem {
   id: number;
   title: string;
   image: string;
+  image2: string;
   desc: string;
   price: number;
 }
@@ -21,6 +22,8 @@ const sliderObj: SliderItem[] = [
     price: 50,
     image:
       'https://theoodie.com/cdn/shop/files/002025RR-Original_Oodies_Category_Tiles_1080_x_1489_-5.jpg?v=1738402880&width=450',
+    image2:
+      'https://theoodie.com/cdn/shop/files/002025RR-Robes_Category_Tiles_1080_x_1489_-2.jpg?v=1737090504&width=450',
   },
   {
     id: 2,
@@ -29,6 +32,8 @@ const sliderObj: SliderItem[] = [
     price: 60,
     image:
       'https://theoodie.com/cdn/shop/files/002025RR-Original_Oodies_Category_Tiles_1080_x_1489_-5.jpg?v=1738402880&width=450',
+    image2:
+      'https://theoodie.com/cdn/shop/files/002025RR-Robes_Category_Tiles_1080_x_1489_-2.jpg?v=1737090504&width=450',
   },
   {
     id: 3,
@@ -37,6 +42,8 @@ const sliderObj: SliderItem[] = [
     price: 70,
     image:
       'https://theoodie.com/cdn/shop/files/002025RR-Original_Oodies_Category_Tiles_1080_x_1489_-5.jpg?v=1738402880&width=450',
+    image2:
+      'https://theoodie.com/cdn/shop/files/002025RR-Robes_Category_Tiles_1080_x_1489_-2.jpg?v=1737090504&width=450',
   },
   {
     id: 4,
@@ -45,9 +52,10 @@ const sliderObj: SliderItem[] = [
     price: 80,
     image:
       'https://theoodie.com/cdn/shop/files/002025RR-Original_Oodies_Category_Tiles_1080_x_1489_-5.jpg?v=1738402880&width=450',
+    image2:
+      'https://theoodie.com/cdn/shop/files/002025RR-Robes_Category_Tiles_1080_x_1489_-2.jpg?v=1737090504&width=450',
   },
 ];
-
 
 const NewArrivalSilder: React.FC = () => {
   const sliderRef = useRef<Slider | null>(null);
