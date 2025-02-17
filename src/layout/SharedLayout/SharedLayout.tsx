@@ -1,7 +1,15 @@
+import { Outlet } from 'react-router';
+import Footer from '../../components/Footer';
+import Navbar from '../../components/Navbar';
+
 const SharedLayout = () => {
   return (
-    <div>SharedLayout</div>
-  )
-}
+    <div>
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </div>
+  );
+};
 
-export default SharedLayout
+export default SharedLayout;
