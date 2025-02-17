@@ -126,13 +126,13 @@ const NewArrivalSilder: React.FC = () => {
       </Slider>
 
       {/* Custom Dots */}
-      <div className='flex justify-center mt-4'>
+      <div className='flex justify-center mt-4 '>
         {sliderObj.map((_, index) => (
           <button
             key={index}
             className={`h-2 w-16 mx-1 my-1 rounded-full transition-all duration-300 ${
               index === activeIndex ? 'bg-[#f87c56]' : 'bg-gray-500'
-            }`}
+            } cursor-pointer`}
             onClick={() => goToSlide(index)}
           ></button>
         ))}
