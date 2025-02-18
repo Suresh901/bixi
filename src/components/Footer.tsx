@@ -5,6 +5,7 @@ import { AiOutlineArrowRight } from 'react-icons/ai';
 import { FaFacebookF } from 'react-icons/fa';
 import { FiInstagram } from 'react-icons/fi';
 import { IoLogoWhatsapp } from 'react-icons/io5';
+import { NavLink } from 'react-router';
 
 const Footer = () => {
   return (
@@ -12,11 +13,13 @@ const Footer = () => {
       <div className='flex flex-col md:flex-row lg:justify-between px-12 bg-[#f8fafc] py-10 gap-10'>
         <div className='flex flex-col gap-5'>
           <div>
-            <img
-              src='https://bixilife.com/_app/immutable/assets/biti%20logo.DMhA3Suo.png'
-              alt=''
-              className='w-24 h-10'
-            />
+            <NavLink to='/'>
+              <img
+                src='https://bixilife.com/_app/immutable/assets/biti%20logo.DMhA3Suo.png'
+                alt=''
+                className='w-24 h-10'
+              />
+            </NavLink>
           </div>
           <h1>Welcome to our world of comfort.</h1>
           <div className='flex flex-col gap-3'>

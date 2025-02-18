@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { useRef } from 'react';
 // import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
 import CaterogyCard from '../card/CaterogyCard';
+import { NavLink } from 'react-router';
 
 interface SliderItem {
   id: number;
@@ -92,11 +93,13 @@ const CategorySlider: React.FC = () => {
       //   onMouseEnter={() => setHovered(true)}
       //   onMouseLeave={() => setHovered(false)}
     >
-      <Slider ref={sliderRef} {...settings}>
-        {sliderObj.map(item => (
-          <CaterogyCard key={item.id} item={item} />
-        ))}
-      </Slider>
+      <NavLink to='/products'>
+        <Slider ref={sliderRef} {...settings}>
+          {sliderObj.map(item => (
+            <CaterogyCard key={item.id} item={item} />
+          ))}
+        </Slider>
+      </NavLink>
 
       {/* Custom Navigation Arrows */}
       {/* <div
