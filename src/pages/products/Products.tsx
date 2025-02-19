@@ -1,4 +1,6 @@
-import ProductsCard from './components/producsCard/ProductsCard';
+import { SortDropDown } from './components/dropdown/SortDropDown';
+import Filter from './components/filter/Filter';
+import ProductsCard from './components/productsCard/ProductsCard';
 
 const sliderObj = [
   {
@@ -45,18 +47,23 @@ const sliderObj = [
 
 const Products = () => {
   return (
-    <div className='py-20 px-12'>
+    <div className='py-20 md:px-12 '>
       <div className='text-center font-bold text-3xl pb-5'>
         <h1>Products</h1>
       </div>
-      <div className='flex justify-between px-12'>
-        <div className='w-1/2'>filter</div>
-        <div className='w-full'>
-          <div className='flex gap-5 items-center'>
-            <h1 className='font-bold'>Sort By: </h1>
-            <button className=' border p-2'>Recomended</button>
+      <div className='flex justify-between md:p-12  '>
+        <div className='w-1/3 hidden md:flex'>
+          <Filter />
+        </div>
+
+        <div className=' flex flex-col gap-5'>
+          <div className='flex gap-5 items-center md:justify-end px-6'>
+            <h1 className='font-bold '>Sort By: </h1>
+            <div className='border border-gray-400 p-1 rounded-lg'>
+              <SortDropDown />
+            </div>
           </div>
-          <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 '>
+          <div className='grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3 '>
             {sliderObj.map(item => (
               <ProductsCard item={item} />
             ))}
