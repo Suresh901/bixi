@@ -1,6 +1,6 @@
 import ProductsCard from '../products/components/productsCard/ProductsCard';
 import Description from './components/description/Description';
-import Slider from './slider/Slider';
+import Slider from './components/slider/Slider';
 
 const sliderObj = [
   {

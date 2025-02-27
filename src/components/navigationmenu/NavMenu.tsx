@@ -56,7 +56,7 @@ export function NavMenu() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className='text-lg'>
+          <NavigationMenuTrigger className='text-sm lg:text-lg'>
             Getting started
           </NavigationMenuTrigger>
           <NavigationMenuContent className='bg-white'>
@@ -91,7 +91,7 @@ export function NavMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className='text-lg'>
+          <NavigationMenuTrigger className='text-sm lg:text-lg'>
             Components
           </NavigationMenuTrigger>
           <NavigationMenuContent className='bg-white'>
@@ -110,7 +110,7 @@ export function NavMenu() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           {/* <Link href='/docs' legacyBehavior passHref> */}
-          <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <NavigationMenuLink className={`text-sm lg:text-lg font-semibold`}>
             Documentation
           </NavigationMenuLink>
           {/* </Link> */}

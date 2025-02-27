@@ -5,6 +5,27 @@ import {
   AccordionTrigger,
 } from './Accordion';
 
+const accordionData = [
+  {
+    id: 'item-1',
+    title: 'Product Details',
+    content:
+      'This product is made from high-quality materials and features a modern design. It is highly durable and appreciated by customers for its performance.',
+  },
+  {
+    id: 'item-2',
+    title: 'Material And Care',
+    content:
+      'Material: 100% premium-quality fabric. Care: Wipe clean with a soft cloth, avoid direct sunlight, and use mild detergent if necessary.',
+  },
+  {
+    id: 'item-3',
+    title: 'Shipping',
+    content:
+      'We offer shipping within 3-5 business days. Check available options at checkout for free delivery offers. International orders may take longer to arrive.',
+  },
+];
+
 export function ProductAccordion() {
   return (
     <Accordion
@@ -13,29 +34,16 @@ export function ProductAccordion() {
       className='w-full'
       defaultValue='item-1'
     >
-      <AccordionItem value='item-1'>
-        <AccordionTrigger>Product Details</AccordionTrigger>
-        <AccordionContent>
-          This product is made from high-quality materials and features a modern
-          design. It is highly durable and appreciated by customers for its
-          performance.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value='item-2'>
-        <AccordionTrigger>Material And Care</AccordionTrigger>
-        <AccordionContent>
-          Material: 100% premium-quality fabric. Care: Wipe clean with a soft
-          cloth, avoid direct sunlight, and use mild detergent if necessary.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value='item-3'>
-        <AccordionTrigger>Shipping</AccordionTrigger>
-        <AccordionContent>
-          We offer shipping within 3-5 business days. Check available options at
-          checkout for free delivery offers. International orders may take
-          longer to arrive.
-        </AccordionContent>
-      </AccordionItem>
+      {accordionData.map(item => (
+        <AccordionItem key={item.id} value={item.id}>
+          <AccordionTrigger className='text-lg md:text-xl'>
+            {item.title}
+          </AccordionTrigger>
+          <AccordionContent className='text-sm md:text-lg'>
+            {item.content}
+          </AccordionContent>
+        </AccordionItem>
+      ))}
     </Accordion>
   );
 }
