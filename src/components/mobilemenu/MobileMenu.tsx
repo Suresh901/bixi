@@ -5,17 +5,20 @@ export function MobileMenu() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <button>
-          <RxHamburgerMenu />
+        <button className='flex items-center'>
+          <RxHamburgerMenu size={24} />
         </button>
       </SheetTrigger>
-      <SheetContent className='bg-white w-full h-full'>
+      <SheetContent className='bg-white w-[100vw]'>
         <div className='flex flex-col items-center justify-center gap-5 font-semibold h-screen'>
           <div>
             <h1>Getting Started</h1>
           </div>
           <div>
             <h1>Components</h1>
+          </div>
+          <div>
+            <h1>Documentation</h1>
           </div>
         </div>
       </SheetContent>

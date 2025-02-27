@@ -10,13 +10,13 @@ import { NavLink } from 'react-router';
 const Footer = () => {
   return (
     <>
-      <div className=' bg-[#f8fafc] py-10 '>
-        <div className='flex flex-col md:flex-row lg:justify-between px-12 gap-10 max-w-[1800px] mx-auto '>
+      <div className=' bg-[#f8fafc] py-10 text-sm sm:text-md md:text-lg'>
+        <div className='flex flex-col md:flex-row lg:justify-between px-6 sm:px-12 gap-10 max-w-[1800px] mx-auto '>
           <div className='flex flex-col gap-5 '>
             <div>
               <NavLink to='/'>
                 <img
-                  src='https://bixilife.com/_app/immutable/assets/biti%20logo.DMhA3Suo.png'
+                  src='https://bixilife.com/_app/immutable/assets/bixi%20logo.Du51TOZz.png'
                   alt=''
                   className='w-24 h-10'
                 />
@@ -24,15 +24,15 @@ const Footer = () => {
             </div>
             <h1>Welcome to our world of comfort.</h1>
             <div className='flex flex-col gap-3'>
-              <div className='flex items-center gap-5'>
+              <div className='flex items-center gap-2 sm:gap-5'>
                 <SlLocationPin />
                 <h1>Kathmandu,Nepal</h1>
               </div>
-              <div className='flex items-center gap-5'>
+              <div className='flex items-center gap-2 sm:gap-5'>
                 <BsTelephone />
                 <h1>980000000200</h1>
               </div>
-              <div className='flex items-center gap-5'>
+              <div className='flex items-center gap-2 sm:gap-5'>
                 <MdOutlineEmail />
                 <h1>xyz@gmail.com</h1>
               </div>
@@ -81,7 +81,7 @@ const Footer = () => {
                 <AiOutlineArrowRight size={24} />
               </div>
             </div>
-            <div className='flex items-center gap-10 '>
+            <div className='flex items-center gap-2 sm:gap-5 '>
               <div className='p-2 bg-white border rounded-full'>
                 <FaFacebookF />
               </div>

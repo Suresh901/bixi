@@ -52,7 +52,7 @@ const Products = () => {
         <h1>Products</h1>
       </div>
       <div className='flex justify-between md:p-12  '>
-        <div className='w-1/3 hidden md:flex'>
+        <div className='w-1/3 hidden lg:flex'>
           <Filter />
         </div>
 

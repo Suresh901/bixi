@@ -130,7 +130,7 @@ const NewArrivalSilder: React.FC = () => {
         {sliderObj.map((_, index) => (
           <button
             key={index}
-            className={`h-2 w-16 mx-1 my-1 rounded-full transition-all duration-300 ${
+            className={`h-1 w-10 md:w-16 mx-1 my-1 rounded-full transition-all duration-300 ${
               index === activeIndex ? 'bg-[#f87c56]' : 'bg-gray-500'
             } cursor-pointer`}
             onClick={() => goToSlide(index)}
