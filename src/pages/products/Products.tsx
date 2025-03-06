@@ -47,23 +47,28 @@ const sliderObj = [
 
 const Products = () => {
   return (
-    <div className='py-20 md:px-12 '>
+    <div className='py-20 lg:px-12 sm:px-6 '>
       <div className='text-center font-bold text-3xl pb-5'>
         <h1>Products</h1>
       </div>
-      <div className='flex justify-between md:p-12  '>
-        <div className='w-1/3 hidden lg:flex'>
+      <div className='flex justify-between  '>
+        <div className='w-1/3 hidden lg:flex xl:px-12 '>
           <Filter />
         </div>
 
         <div className=' flex flex-col gap-5'>
+          <div className='md:hidden px-6'>
+            <div className='border rounded-md px-5 py-2 text-center'>
+              Filter
+            </div>
+          </div>
           <div className='flex gap-5 items-center md:justify-end px-6'>
             <h1 className='font-bold '>Sort By: </h1>
             <div className='border border-gray-400 p-1 rounded-lg'>
               <SortDropDown />
             </div>
           </div>
-          <div className='grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3  '>
+          <div className='grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3  md:px-6'>
             {sliderObj.map(item => (
               <ProductsCard item={item} />
             ))}

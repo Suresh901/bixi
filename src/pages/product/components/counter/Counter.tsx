@@ -9,19 +9,17 @@ const Counter = () => {
       <h1 className='text-xl font-bold'>Quantity</h1>
       <div className='flex items-center gap-4'>
         <button
-          className='border px-2 rounded-md text-xl'
+          className='border px-2 rounded-md text-xl cursor-pointer'
           onClick={handleDecrement}
         >
-          {' '}
-          -{' '}
+          -
         </button>
         <div className='text-xl'>{count}</div>
         <button
-          className='border px-2 rounded-md text-xl'
+          className='border px-2 rounded-md text-xl cursor-pointer'
           onClick={handleIncrement}
         >
-          {' '}
-          +{' '}
+          +
         </button>
       </div>
     </div>
