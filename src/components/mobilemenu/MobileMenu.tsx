@@ -6,7 +6,7 @@ export function MobileMenu() {
     <Sheet>
       <SheetTrigger asChild>
         <button className='flex items-center'>
-          <RxHamburgerMenu size={24} />
+          <RxHamburgerMenu />
         </button>
       </SheetTrigger>
       <SheetContent className='bg-white w-[100vw]'>

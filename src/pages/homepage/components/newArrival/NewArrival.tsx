@@ -1,6 +1,8 @@
 import NewArrivalSilder from '../slider/NewArrivalSilder';
 
 const NewArrival = () => {
+
+  
   return (
     <div className='md:px-12 pt-20 '>
       <div className='flex justify-between px-4'>
