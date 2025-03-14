@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { Link } from 'react-router';
 
 import { cn } from '../../utils/index';
-// import { Icons } from '@/components/icons';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,48 +8,53 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from '../navigationmenu/NavigationMenu';
+import { useQuery } from '@tanstack/react-query';
+const apiUrl = import.meta.env.VITE_API_URL;
 
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: 'Alert Dialog',
-    href: '/docs/primitives/alert-dialog',
-    description:
-      'A modal dialog that interrupts the user with important content and expects a response.',
-  },
-  {
-    title: 'Hover Card',
-    href: '/docs/primitives/hover-card',
-    description:
-      'For sighted users to preview content available behind a link.',
-  },
-  {
-    title: 'Progress',
-    href: '/docs/primitives/progress',
-    description:
-      'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
-  },
-  {
-    title: 'Scroll-area',
-    href: '/docs/primitives/scroll-area',
-    description: 'Visually or semantically separates content.',
-  },
-  {
-    title: 'Tabs',
-    href: '/docs/primitives/tabs',
-    description:
-      'A set of layered sections of content—known as tab panels—that are displayed one at a time.',
-  },
-  {
-    title: 'Tooltip',
-    href: '/docs/primitives/tooltip',
-    description:
-      'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.',
-  },
-];
+interface Category {
+  id: number;
+  title: string;
+  image: string;
+  status: number;
+  slug: string;
+  children: [
+    {
+      id: number;
+      title: string;
+      image: string;
+      status: number;
+      slug: string;
+    },
+  ];
+}
 
 export function NavMenu() {
+  const fetchCategories = async () => {
+    const response = await fetch(`${apiUrl}/category`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch categories');
+    }
+    const data = await response.json();
+    // console.log(data.data);
+    return data.data;
+  };
+
+  const {
+    data: categoryData,
+    isLoading,
+    isError,
+  } = useQuery<Category[]>({
+    queryKey: ['categoryData'],
+    queryFn: fetchCategories,
+  });
+  if (!!categoryData) {
+    // console.log(category[0].image);
+    console.log(categoryData);
+  }
+
+  if (isLoading) return <p className='text-center'>Loading...</p>;
+  if (isError) return <p>Error fetching team members.</p>;
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -67,39 +70,43 @@ export function NavMenu() {
             New
           </NavigationMenuLink>
         </NavigationMenuItem>
+
         <NavigationMenuItem>
           <NavigationMenuTrigger className='text-sm lg:text-lg'>
             Categories
           </NavigationMenuTrigger>
           <NavigationMenuContent className='bg-white'>
-            <ul className='grid grid-cols-3 gap-3 p-6 md:w-[600px]'>
-              <ListItem href='/docs' title='Introduction'>
-                Re-usable components built using Radix UI and Tailwind CSS.
-              </ListItem>
-              <ListItem href='/docs/installation' title='Installation'>
-                How to install dependencies and structure your app.
-              </ListItem>
-              <ListItem href='/docs/primitives/typography' title='Typography'>
-                Styles for headings, paragraphs, lists...etc
-              </ListItem>
+            <ul className='grid grid-cols-3 gap-5 p-6 md:w-[800px]'>
+              {categoryData?.map(item => (
+                <li key={item.id}>
+                  {/* Main Category */}
+                  <h3 className='font-bold cursor-pointer'>{item.title}</h3>
+                  {/* Children Categories */}
+                  {item.children?.length > 0 && (
+                    <ul className='mt-2 space-y-1'>
+                      {item.children.map(child => (
+                        <li
+                          key={child.id}
+                          className='text-sm text-gray-600 cursor-pointer'
+                        >
+                          {child.title}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
+
         <NavigationMenuItem>
           <NavigationMenuTrigger className='text-sm lg:text-lg'>
             Accessories
           </NavigationMenuTrigger>
           <NavigationMenuContent className='bg-white'>
             <ul className='grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] '>
-              {components.map(component => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
-                  {component.description}
-                </ListItem>
-              ))}
+              <h1>item</h1>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>

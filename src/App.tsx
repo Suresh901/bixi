@@ -8,23 +8,27 @@ import Register from './pages/register/Register';
 import ForgetPassword from './pages/forgetPassword/ForgetPassword';
 import Cart from './pages/cart/Cart';
 import CheckOut from './pages/checkout/CheckOut';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 function App() {
+  const queryClient = new QueryClient();
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<SharedLayout />}>
-          <Route path='/' element={<Homepage />} />
-          <Route path='/products' element={<Products />} />
-          <Route path='/product/:id' element={<Product />} />
-          <Route path='/cart' element={<Cart />} />
-          <Route path='/checkout' element={<CheckOut />} />
-        </Route>
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/forgetPassword' element={<ForgetPassword />} />
-      </Routes>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<SharedLayout />}>
+            <Route path='/' element={<Homepage />} />
+            <Route path='/products' element={<Products />} />
+            <Route path='/product/:id' element={<Product />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/checkout' element={<CheckOut />} />
+          </Route>
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/forgetPassword' element={<ForgetPassword />} />
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

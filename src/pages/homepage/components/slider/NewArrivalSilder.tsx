@@ -5,62 +5,21 @@ import { useRef, useState } from 'react';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
 import NewArrivalsCard from '../card/NewArrivalsCard';
 
-interface SliderItem {
+interface Products {
   id: number;
   title: string;
+  slug: string;
+  sku: string;
   image: string;
-  image2: string;
-  desc: string;
+  short_description: string;
   price: number;
+  discount: number;
 }
 
-const sliderObj: SliderItem[] = [
-  {
-    id: 1,
-    title: 'Dress',
-    desc: 'This is a nice dress',
-    price: 50,
-    image:
-      'https://theoodie.com/cdn/shop/files/002025RR-Original_Oodies_Category_Tiles_1080_x_1489_-5.jpg?v=1738402880&width=450',
-    image2:
-      'https://theoodie.com/cdn/shop/files/002025RR-Robes_Category_Tiles_1080_x_1489_-2.jpg?v=1737090504&width=450',
-  },
-  {
-    id: 2,
-    title: 'Shop Originals',
-    desc: 'This is a nice original product',
-    price: 60,
-    image:
-      'https://theoodie.com/cdn/shop/files/002025RR-Original_Oodies_Category_Tiles_1080_x_1489_-5.jpg?v=1738402880&width=450',
-    image2:
-      'https://theoodie.com/cdn/shop/files/002025RR-Robes_Category_Tiles_1080_x_1489_-2.jpg?v=1737090504&width=450',
-  },
-  {
-    id: 3,
-    title: 'Shop Originals',
-    desc: 'Another original product',
-    price: 70,
-    image:
-      'https://theoodie.com/cdn/shop/files/002025RR-Original_Oodies_Category_Tiles_1080_x_1489_-5.jpg?v=1738402880&width=450',
-    image2:
-      'https://theoodie.com/cdn/shop/files/002025RR-Robes_Category_Tiles_1080_x_1489_-2.jpg?v=1737090504&width=450',
-  },
-  {
-    id: 4,
-    title: 'Shop Originals',
-    desc: 'Yet another original product',
-    price: 80,
-    image:
-      'https://theoodie.com/cdn/shop/files/002025RR-Original_Oodies_Category_Tiles_1080_x_1489_-5.jpg?v=1738402880&width=450',
-    image2:
-      'https://theoodie.com/cdn/shop/files/002025RR-Robes_Category_Tiles_1080_x_1489_-2.jpg?v=1737090504&width=450',
-  },
-];
-
-const NewArrivalSilder: React.FC = () => {
+const NewArrivalSilder = ({ newArrival }: { newArrival: Products[] }) => {
   const sliderRef = useRef<Slider | null>(null);
   const [hovered, setHovered] = useState<boolean>(false);
-  const [activeIndex, setActiveIndex] = useState(0);
+  // const [activeIndex, setActiveIndex] = useState(0);
 
   const settings = {
     dots: false, // Disable default dots
@@ -109,9 +68,9 @@ const NewArrivalSilder: React.FC = () => {
   };
 
   // Handle dot click navigation
-  const goToSlide = (index: number) => {
-    sliderRef.current?.slickGoTo(index);
-  };
+  // const goToSlide = (index: number) => {
+  //   sliderRef.current?.slickGoTo(index);
+  // };
 
   return (
     <div
@@ -120,23 +79,27 @@ const NewArrivalSilder: React.FC = () => {
       onMouseLeave={() => setHovered(false)}
     >
       <Slider ref={sliderRef} {...settings}>
-        {sliderObj.map(item => (
+        {newArrival.map(item => (
           <NewArrivalsCard item={item} />
         ))}
       </Slider>
 
       {/* Custom Dots */}
-      <div className='flex justify-center mt-4 '>
-        {sliderObj.map((_, index) => (
-          <button
-            key={index}
-            className={`h-1 w-10 md:w-16 mx-1 my-1 rounded-full transition-all duration-300 ${
-              index === activeIndex ? 'bg-[#f87c56]' : 'bg-gray-500'
-            } cursor-pointer`}
-            onClick={() => goToSlide(index)}
-          ></button>
-        ))}
-      </div>
+      {/* <div className='flex justify-center mt-4 '>
+        {Array.from({ length: Math.ceil(newArrival.length / 3) }).map(
+          (_, pageIndex) => (
+            <button
+              key={pageIndex}
+              className={`h-1 w-10 md:w-16 mx-1 my-1 rounded-full transition-all duration-300 ${
+                pageIndex === Math.floor(activeIndex / 4)
+                  ? 'bg-[#f87c56]'
+                  : 'bg-gray-500'
+              } cursor-pointer`}
+              onClick={() => goToSlide(pageIndex * 4)}
+            ></button>
+          ),
+        )}
+      </div> */}
 
       {/* Custom Navigation Arrows */}
       <div

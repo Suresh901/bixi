@@ -24,10 +24,9 @@ const CaterogyCard = ({ item }: Props) => {
           <img
             src={item.image}
             alt='image'
-            className='rounded-md group-hover:brightness-50'
+            className='rounded-md group-hover:brightness-50 w-100 h-100 object-cover'
           />
         </div>
-       
       </div>
     </div>
   );

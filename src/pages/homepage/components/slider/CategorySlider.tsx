@@ -1,10 +1,11 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 // import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
 import CaterogyCard from '../card/CaterogyCard';
 import { NavLink } from 'react-router';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
 
 interface SliderItem {
   id: number;
@@ -12,39 +13,12 @@ interface SliderItem {
   image: string;
 }
 
-const sliderObj: SliderItem[] = [
-  {
-    id: 1,
-    title: 'Shop Originals',
-    image:
-      'https://theoodie.com/cdn/shop/files/002025RR-Original_Oodies_Category_Tiles_1080_x_1489_-5.jpg?v=1738402880&width=450',
-  },
-  {
-    id: 2,
-    title: 'Shop Originals',
-    image:
-      'https://theoodie.com/cdn/shop/files/002025RR-Original_Oodies_Category_Tiles_1080_x_1489_-5.jpg?v=1738402880&width=450',
-  },
-  {
-    id: 3,
-    title: 'Shop Originals',
-    image:
-      'https://theoodie.com/cdn/shop/files/002025RR-Original_Oodies_Category_Tiles_1080_x_1489_-5.jpg?v=1738402880&width=450',
-  },
-  {
-    id: 4,
-    title: 'Shop Originals',
-    image:
-      'https://theoodie.com/cdn/shop/files/002025RR-Original_Oodies_Category_Tiles_1080_x_1489_-5.jpg?v=1738402880&width=450',
-  },
-];
-
-const CategorySlider: React.FC = () => {
+const CategorySlider = ({ category }: { category: SliderItem[] }) => {
   const sliderRef = useRef<Slider | null>(null);
-  //   const [hovered, setHovered] = useState<boolean>(false);
+  const [hovered, setHovered] = useState<boolean>(false);
 
   const settings = {
-    dots: false, // Disable default dots
+    dots: false,
     infinite: true,
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -79,30 +53,30 @@ const CategorySlider: React.FC = () => {
     ],
   };
 
-  //   const handlePrevClick = () => {
-  //     sliderRef.current?.slickPrev();
-  //   };
+  const handlePrevClick = () => {
+    sliderRef.current?.slickPrev();
+  };
 
-  //   const handleNextClick = () => {
-  //     sliderRef.current?.slickNext();
-  //   };
+  const handleNextClick = () => {
+    sliderRef.current?.slickNext();
+  };
 
   return (
     <div
       className='relative'
-      //   onMouseEnter={() => setHovered(true)}
-      //   onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
-      <NavLink to='/products'>
+      <NavLink to='/category'>
         <Slider ref={sliderRef} {...settings}>
-          {sliderObj.map(item => (
+          {category.map((item: SliderItem) => (
             <CaterogyCard key={item.id} item={item} />
           ))}
         </Slider>
       </NavLink>
 
       {/* Custom Navigation Arrows */}
-      {/* <div
+      <div
         className={`flex justify-end transition-opacity duration-300 ${
           hovered ? 'opacity-100' : 'opacity-0'
         }`}
@@ -115,7 +89,7 @@ const CategorySlider: React.FC = () => {
           className='h-8 w-8 cursor-pointer absolute top-[15rem] right-0 shadow-xl bg-white rounded-md'
           onClick={handleNextClick}
         />
-      </div> */}
+      </div>
     </div>
   );
 };
