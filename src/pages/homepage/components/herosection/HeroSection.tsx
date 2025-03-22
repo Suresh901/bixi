@@ -16,11 +16,6 @@ const HeroSection = () => {
       image:
         'https://theoodie.com/cdn/shop/files/Miffy_Home_Page_Banner_3840x1400px.jpg?v=1741065020&width=1920',
     },
-    {
-      id: 3,
-      image:
-        'https://theoodie.com/cdn/shop/files/Sleepwear_Home_Page_Banner_3840x1400px_53365409-ca36-4e99-8708-eee3bba8a0e0.gif?v=1741752844&width=1920',
-    },
   ];
 
   const sliderRef = useRef<Slider | null>(null);

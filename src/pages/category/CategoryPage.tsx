@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { SortDropDown } from '../products/components/dropdown/SortDropDown';
 import Filter from '../products/components/filter/Filter';
-import CatrgoriesCard from './components/CatrgoriesCard';
+import CaterogyCard from '../homepage/components/card/CaterogyCard';
 const apiUrl = import.meta.env.VITE_API_URL;
 
 interface Category {
@@ -55,9 +55,9 @@ const CategoryPage = () => {
               <SortDropDown />
             </div>
           </div>
-          <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 md:px-6 '>
+          <div className='grid grid-cols-2 md:grid-cols-2 xl:grid-cols-4 md:px-6 '>
             {category?.map(item => (
-              <CatrgoriesCard item={item} />
+              <CaterogyCard item={item} />
             ))}
           </div>
         </div>

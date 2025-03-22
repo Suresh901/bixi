@@ -67,7 +67,7 @@ const CategorySlider = ({ category }: { category: SliderItem[] }) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <NavLink to='/category'>
+      <NavLink to='/products'>
         <Slider ref={sliderRef} {...settings}>
           {category.map((item: SliderItem) => (
             <CaterogyCard key={item.id} item={item} />

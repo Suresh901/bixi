@@ -10,22 +10,22 @@ interface Props {
 
 const CaterogyCard = ({ item }: Props) => {
   return (
-    <div>
+    <div className='p-2'>
       <div
         key={item.id}
-        className='h-[Hug (382.94px)] cursor-pointer p-2 rounded-lg relative group z-[100] overflow-hidden'
+        className='cursor-pointer p-4 rounded-lg shadow-lg bg-white'
       >
-        <div className='absolute -bottom-20 left-0 right-0 flex flex-col items-center justify-center group-hover:bottom-20 duration-500'>
-          <div className='text-center z-[10]'>
-            <h1 className='font-semibold text-white'>{item.title}</h1>
-          </div>
-        </div>
-        <div>
+        <div className='p-2'>
           <img
             src={item.image}
-            alt='image'
-            className='rounded-md group-hover:brightness-50 w-100 h-100 object-cover'
+            alt={item.title}
+            className='rounded-md w-full h-64 object-cover'
           />
+        </div>
+        <div className='flex flex-col items-center justify-center duration-500'>
+          <div className='text-center'>
+            <h1 className='font-semibold text-lg'>{item.title}</h1>
+          </div>
         </div>
       </div>
     </div>
