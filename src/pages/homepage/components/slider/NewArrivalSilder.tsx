@@ -26,13 +26,13 @@ const NewArrivalSilder = ({ newArrival }: { newArrival: Products[] }) => {
     infinite: true,
     slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     speed: 1000,
     pauseOnHover: true,
     nextArrow: <></>,
     prevArrow: <></>,
-    beforeChange: (oldIndex: number, newIndex: number) =>
-      setActiveIndex(newIndex), // Track active slide
+    // beforeChange: (oldIndex: number, newIndex: number) =>
+    //   setActiveIndex(newIndex), // Track active slide
     responsive: [
       {
         breakpoint: 1024,

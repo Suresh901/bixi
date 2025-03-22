@@ -22,7 +22,7 @@ const CategorySlider = ({ category }: { category: SliderItem[] }) => {
     infinite: true,
     slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     speed: 1000,
     pauseOnHover: true,
     nextArrow: <></>,

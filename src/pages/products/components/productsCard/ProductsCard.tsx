@@ -5,7 +5,7 @@ interface Item {
   id: number;
   title: string;
   image: string;
-  image2: string;
+
   desc: string;
   price: number;
 }
@@ -17,16 +17,16 @@ const ProductsCard = ({ item }: Props) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <NavLink to={`/product/${item.title}`}>
-      <div className='cursor-pointer p-4 rounded-lg relative'>
+      <div className='cursor-pointer p-4 rounded-lg relative '>
         <div
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           className='overflow-hidden rounded-lg'
         >
           <img
-            src={isHovered ? item.image2 : item.image}
+            src={item.image}
             alt=''
-            className='rounded-lg transition-transform duration-300 transform hover:scale-110 '
+            className='rounded-lg transition-transform duration-300 transform hover:scale-110 w-80 h-80 '
           />
         </div>
 
@@ -42,10 +42,10 @@ const ProductsCard = ({ item }: Props) => {
         <div className='p-2 text-[#6e7174] flex flex-col gap-2'>
           <h1 className='font-bold text-md md:text-xl'>{item.title}</h1>
           <h1 className='text-lg'>{item.desc}</h1>
-          <div className='flex items-center gap-2'>
+          {/* <div className='flex items-center gap-2'>
             <StarRating />
             <span>(122)</span>
-          </div>
+          </div> */}
           <h1 className='font-bold text-xl'>${item.price}</h1>
         </div>
       </div>

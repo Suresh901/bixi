@@ -17,7 +17,6 @@ const Category = () => {
       throw new Error('Failed to fetch categories');
     }
     const data = await response.json();
-    // console.log(data.data);
     return data.data;
   };
 
@@ -29,10 +28,10 @@ const Category = () => {
     queryKey: ['category'],
     queryFn: fetchCategories,
   });
-  if (!!category) {
-    // console.log(category[0].image);
-    // console.log(category);
-  }
+  // if (!!category) {
+  //   // console.log(category[0].image);
+  //   // console.log(category);
+  // }
 
   if (isLoading) return <p className='text-center'>Loading...</p>;
   if (isError) return <p>Error fetching team members.</p>;
@@ -41,7 +40,7 @@ const Category = () => {
     <div className='md:px-12 pt-20 relative'>
       <div className='flex justify-between px-4'>
         <h1 className='font-bold text-lg md:text-3xl'>Shop By Category</h1>
-        <NavLink to='/products'>
+        <NavLink to='/category'>
           <button className='cursor-pointer text-md md:text-xl'>
             View All
           </button>

@@ -9,6 +9,7 @@ import ForgetPassword from './pages/forgetPassword/ForgetPassword';
 import Cart from './pages/cart/Cart';
 import CheckOut from './pages/checkout/CheckOut';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import CategoryPage from './pages/category/CategoryPage';
 
 function App() {
   const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ function App() {
             <Route path='/product/:id' element={<Product />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/checkout' element={<CheckOut />} />
+            <Route path='/category' element={<CategoryPage />} />
           </Route>
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />

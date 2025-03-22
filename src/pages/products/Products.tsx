@@ -68,7 +68,7 @@ const Products = () => {
               <SortDropDown />
             </div>
           </div>
-          <div className='grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3  md:px-6'>
+          <div className='grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-5 md:px-6'>
             {sliderObj.map(item => (
               <ProductsCard item={item} />
             ))}
