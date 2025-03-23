@@ -39,16 +39,7 @@ const CategoryPage = () => {
         <h1>Categories</h1>
       </div>
       <div className='flex justify-between  '>
-        {/* <div className='w-1/3 hidden lg:flex xl:px-12 '>
-          <Filter />
-        </div> */}
-
         <div className=' flex flex-col gap-5'>
-          <div className='md:hidden px-6'>
-            <div className='border rounded-md px-5 py-2 text-center'>
-              Filter
-            </div>
-          </div>
           <div className='flex gap-5 items-center md:justify-end px-6'>
             <h1 className='font-bold '>Sort By: </h1>
             <div className='border border-gray-400 p-1 rounded-lg'>

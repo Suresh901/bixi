@@ -47,10 +47,10 @@ export function NavMenu() {
     queryKey: ['categoryData'],
     queryFn: fetchCategories,
   });
-  if (!!categoryData) {
-    // console.log(category[0].image);
-    console.log(categoryData);
-  }
+  // if (!!categoryData) {
+  //   // console.log(category[0].image);
+  //   console.log(categoryData);
+  // }
 
   if (isLoading) return <p className='text-center'>Loading...</p>;
   if (isError) return <p>Error fetching team members.</p>;

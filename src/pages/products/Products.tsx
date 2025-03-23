@@ -1,51 +1,39 @@
 import { SortDropDown } from './components/dropdown/SortDropDown';
 import Filter from './components/filter/Filter';
 import ProductsCard from './components/productsCard/ProductsCard';
+import { useQuery } from '@tanstack/react-query';
+const apiUrl = import.meta.env.VITE_API_URL;
 
-const sliderObj = [
-  {
-    id: 1,
-    title: 'Dress',
-    desc: 'This is a nice dress',
-    price: 50,
-    image:
-      'https://theoodie.com/cdn/shop/files/002025RR-Original_Oodies_Category_Tiles_1080_x_1489_-5.jpg?v=1738402880&width=450',
-    image2:
-      'https://theoodie.com/cdn/shop/files/002025RR-Robes_Category_Tiles_1080_x_1489_-2.jpg?v=1737090504&width=450',
-  },
-  {
-    id: 2,
-    title: 'Shop Originals',
-    desc: 'This is a nice original product',
-    price: 60,
-    image:
-      'https://theoodie.com/cdn/shop/files/002025RR-Original_Oodies_Category_Tiles_1080_x_1489_-5.jpg?v=1738402880&width=450',
-    image2:
-      'https://theoodie.com/cdn/shop/files/002025RR-Robes_Category_Tiles_1080_x_1489_-2.jpg?v=1737090504&width=450',
-  },
-  {
-    id: 3,
-    title: 'Shop Originals',
-    desc: 'Another original product',
-    price: 70,
-    image:
-      'https://theoodie.com/cdn/shop/files/002025RR-Original_Oodies_Category_Tiles_1080_x_1489_-5.jpg?v=1738402880&width=450',
-    image2:
-      'https://theoodie.com/cdn/shop/files/002025RR-Robes_Category_Tiles_1080_x_1489_-2.jpg?v=1737090504&width=450',
-  },
-  {
-    id: 4,
-    title: 'Shop Originals',
-    desc: 'Yet another original product',
-    price: 80,
-    image:
-      'https://theoodie.com/cdn/shop/files/002025RR-Original_Oodies_Category_Tiles_1080_x_1489_-5.jpg?v=1738402880&width=450',
-    image2:
-      'https://theoodie.com/cdn/shop/files/002025RR-Robes_Category_Tiles_1080_x_1489_-2.jpg?v=1737090504&width=450',
-  },
-];
-
+interface Products {
+  id: number;
+  title: string;
+  image: string;
+  status: number;
+}
 const Products = () => {
+  const fetchProducts = async () => {
+    const response = await fetch(`${apiUrl}/filter?category=2`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch categories');
+    }
+    const data = await response.json();
+    return data.data;
+  };
+
+  const {
+    data: products,
+    isLoading,
+    isError,
+  } = useQuery<Products[] | undefined>({
+    queryKey: ['products'],
+    queryFn: fetchProducts,
+  });
+
+  console.log(products);
+
+  if (isLoading) return <p className='text-center'>Loading...</p>;
+  if (isError) return <p>Error fetching team members.</p>;
+
   return (
     <div className='py-20 lg:px-12 sm:px-6 '>
       <div className='text-center font-bold text-3xl pb-5'>
@@ -69,7 +57,7 @@ const Products = () => {
             </div>
           </div>
           <div className='grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-5 md:px-6'>
-            {sliderObj.map(item => (
+            {products.map(item => (
               <ProductsCard item={item} />
             ))}
           </div>
